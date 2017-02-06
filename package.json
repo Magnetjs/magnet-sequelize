@@ -1,6 +1,6 @@
 {
   "name": "magnet-sequelize",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Readme",
   "main": "dist/index.js",
   "scripts": {
@@ -34,6 +34,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "concurrently": "^2.0.0",
     "nodemon": "^1.9.1",
+    "rimraf": "^2.5.4",
     "standard": "^8.6.0",
     "tap-spec": "^4.1.1"
   },
