@@ -1,6 +1,6 @@
 import Base from 'magnet-core/base'
 import path from 'path'
-import defaultConfig from './config/koa'
+import defaultConfig from './config/sequelize'
 
 const relationships = require(
   path.resolve(

@@ -10,6 +10,10 @@ var _base = require('magnet-core/base');
 
 var _base2 = _interopRequireDefault(_base);
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _koa = require('./config/koa');
 
 var _koa2 = _interopRequireDefault(_koa);
@@ -24,47 +28,46 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var KoaStart = function (_Base) {
-  _inherits(KoaStart, _Base);
+var relationships = require(_path2.default.resolve(process.cwd(), 'server', 'models', 'relationships'));
 
-  function KoaStart() {
-    _classCallCheck(this, KoaStart);
+var MagnetSequelize = function (_Base) {
+  _inherits(MagnetSequelize, _Base);
 
-    return _possibleConstructorReturn(this, (KoaStart.__proto__ || Object.getPrototypeOf(KoaStart)).apply(this, arguments));
+  function MagnetSequelize() {
+    _classCallCheck(this, MagnetSequelize);
+
+    return _possibleConstructorReturn(this, (MagnetSequelize.__proto__ || Object.getPrototypeOf(MagnetSequelize)).apply(this, arguments));
   }
 
-  _createClass(KoaStart, [{
+  _createClass(MagnetSequelize, [{
     key: 'setup',
     value: function () {
       var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee() {
+        var config;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
+                config = Object.assign(_koa2.default, this.config.sequelize, this.options);
 
-                this.koaConfig = Object.assign(_koa2.default, this.config.koa, this.options);
 
-                if (this.koaConfig.port) {
-                  this.app.server = this.app.application.listen(this.koaConfig.port);
-                  this.log.info('Server started at port ' + this.koaConfig.port);
+                relationships.relationships(this.app);
+                // All relationships should locate in server/models/relationships.js
+
+                if (!config.sync) {
+                  _context.next = 5;
+                  break;
                 }
-                _context.next = 9;
-                break;
+
+                _context.next = 5;
+                return this.app.sequelize.sync(config.sync);
 
               case 5:
-                _context.prev = 5;
-                _context.t0 = _context['catch'](0);
-
-                this.log.error(_context.t0);
-                throw _context.t0;
-
-              case 9:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 5]]);
+        }, _callee, this);
       }));
 
       function setup() {
@@ -75,7 +78,7 @@ var KoaStart = function (_Base) {
     }()
   }]);
 
-  return KoaStart;
+  return MagnetSequelize;
 }(_base2.default);
 
-exports.default = KoaStart;
+exports.default = MagnetSequelize;
