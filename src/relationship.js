@@ -5,13 +5,14 @@ import defaultConfig from './config/sequelize'
 const relationships = require(
   path.resolve(
     process.cwd(),
+    'dist',
     'server',
     'models',
     'relationships'
   )
 )
 
-export default class MagnetSequelize extends Base {
+export default class SequelizeRelationship extends Base {
   async setup () {
     const config = Object.assign(defaultConfig, this.config.sequelize, this.options)
 
