@@ -1,4 +1,6 @@
 export default {
+  relationshipFile: 'server/models/relationships',
+
   // dialect: 'postgres',
   // host: '127.0.0.1',
   // user: 'postgres',
