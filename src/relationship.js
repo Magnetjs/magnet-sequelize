@@ -4,7 +4,7 @@ import defaultConfig from './config/sequelize'
 
 export default class SequelizeRelationship extends Base {
   async setup () {
-    const config = Object.assign(defaultConfig, this.config.sequelize, this.options)
+    const config = this.setConfig('sequelize', defaultConfig)
 
     const relationships = require(
       path.resolve(
