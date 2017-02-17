@@ -140,7 +140,10 @@ Function.prototype.$asyncbind = function $asyncbind(self, catcher) {
 
         function callQueue() {
           while (fq.length - fqStart) {
-            fq[fqStart]();
+            try {
+              fq[fqStart]();
+            } catch (ex) {}
+
             fq[fqStart++] = undefined;
 
             if (fqStart === bufferSize) {
@@ -269,7 +272,7 @@ Function.prototype.$asyncbind = function $asyncbind(self, catcher) {
         return z;
       };
 
-      Zousan.version = "2.3.2-nodent";
+      Zousan.version = "2.3.3-nodent";
       return Zousan;
     })();
   }
@@ -309,7 +312,7 @@ class SequelizeRelationship extends _base2.default {
     var _this = this;
 
     return _asyncToGenerator(function* () {
-      const config = Object.assign(_sequelize2.default, _this.config.sequelize, _this.options);
+      const config = _this.setConfig('sequelize', _sequelize2.default);
 
       const relationships = require(_path2.default.resolve(process.cwd(), config.relationshipFile));
 
