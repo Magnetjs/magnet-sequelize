@@ -1,10 +1,11 @@
-import Base from 'magnet-core/base'
-import path from 'path'
+import { Module } from 'magnet-core/module'
+import * as path from 'path'
+
 import defaultConfig from './config/sequelize'
 
-export default class SequelizeRelationship extends Base {
+export default class SequelizeRelationship extends Module {
   async setup () {
-    const config = this.setConfig('sequelize', defaultConfig)
+    const config = this.prepareConfig('sequelize', defaultConfig)
 
     const relationships = require(
       path.resolve(
@@ -14,7 +15,6 @@ export default class SequelizeRelationship extends Base {
     )
 
     relationships.relationships(this.app)
-    // All relationships should locate in server/models/relationships.js
 
     if (config.sync) {
       await this.app.sequelize.sync(config.sync)

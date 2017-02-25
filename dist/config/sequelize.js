@@ -1,9 +1,6 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
-  relationshipFile: 'server/models/relationships'
-
+    relationshipFile: 'server/models/relationships',
 };
+//# sourceMappingURL=sequelize.js.map
