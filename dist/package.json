@@ -1,6 +1,6 @@
 {
   "name": "magnet-sequelize",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Readme",
   "keywords": [
     "magnet",
@@ -17,46 +17,24 @@
   "repository": "magnetjs/magnet-sequelize",
   "scripts": {
     "build": "npm run clean-lib && npm run build:index && npm run copy-package",
-    "build:index": "babel src --out-dir dist",
+    "build:index": "tsc",
     "clean-lib": "node_modules/.bin/rimraf ./dist",
     "copy-package": "cp -rf package.json LICENSE README.md dist",
     "dist": "npm run build && cd dist && npm publish",
-    "start": "babel src --out-dir dist",
+    "start": "tsc",
     "watch": "nodemon --ignore dist --exec \"babel src\" --out-dir dist",
     "watch-all": "concurrently \"npm run watch\" \"npm run watch-test\"",
     "watch-test": "nodemon --delay 0.5 --ignore src --exec babel-node tests/index.js | tap-spec"
   },
-  "babel": {
-    "ignore": [
-      "docs",
-      "node_modules",
-      "dist",
-      "test"
-    ],
-    "plugins": [
-      "fast-async"
-    ],
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "node": "current"
-          }
-        }
-      ]
-    ]
-  },
   "dependencies": {
+    "@types/node": "^7.0.5",
     "magnet-core": "^3.4.2",
     "pg": "^6.1.2",
-    "sequelize": "^3.30.2"
+    "sequelize": "^3.30.2",
+    "typescript": "^2.2.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-preset-env": "^1.1.8",
     "concurrently": "^3.3.0",
-    "fast-async": "^6.2.1",
     "nodemon": "^1.9.1",
     "rimraf": "^2.5.4",
     "standard": "^8.6.0",

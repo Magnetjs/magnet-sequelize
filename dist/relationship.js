@@ -15,7 +15,7 @@ class SequelizeRelationship extends module_1.Module {
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
             const config = this.prepareConfig('sequelize', sequelize_1.default);
-            const relationships = require(path.resolve(process.cwd(), config.relationshipFile));
+            const relationships = require(path.resolve(this.config.baseDirPath, config.relationshipFile));
             relationships.relationships(this.app);
             if (config.sync) {
                 yield this.app.sequelize.sync(config.sync);
