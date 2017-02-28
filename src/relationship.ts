@@ -9,7 +9,7 @@ export default class SequelizeRelationship extends Module {
 
     const relationships = require(
       path.resolve(
-        process.cwd(),
+        this.config.baseDirPath,
         config.relationshipFile
       )
     )
