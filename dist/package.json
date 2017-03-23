@@ -1,46 +1,37 @@
 {
   "name": "magnet-sequelize",
-  "version": "0.5.0",
-  "description": "Readme",
+  "version": "0.7.0",
+  "description": "Magnet adapter for sequelize",
   "keywords": [
     "magnet",
     "magnetjs",
-    "sequelize"
+    "magnet-sequelize"
   ],
-  "homepage": "https://github.com/Magnetjs/magnet-sequelize#readme",
+  "homepage": "https://github.com/magnetjs/magnet-sequelize#readme",
   "bugs": {
-    "url": "https://github.com/Magnetjs/magnet-sequelize/issues"
+    "url": "https://github.com/magnetjs/magnet-sequelize/issues"
   },
-  "license": "MIT",
   "author": "Kieve Chua <kievechua@gmail.com> (https://github.com/kievechua)",
-  "main": "dist/index.js",
+  "main": "index.js",
   "repository": "magnetjs/magnet-sequelize",
   "scripts": {
-    "build": "npm run clean-lib && npm run build:index && npm run copy-package",
-    "build:index": "tsc",
-    "clean-lib": "node_modules/.bin/rimraf ./dist",
-    "copy-package": "cp -rf package.json LICENSE README.md dist",
-    "dist": "npm run build && cd dist && npm publish",
-    "start": "tsc",
-    "watch": "nodemon --ignore dist --exec \"babel src\" --out-dir dist",
-    "watch-all": "concurrently \"npm run watch\" \"npm run watch-test\"",
-    "watch-test": "nodemon --delay 0.5 --ignore src --exec babel-node tests/index.js | tap-spec"
+    "start": "fly",
+    "build": "fly buildAndCopy",
+    "dist": "npm run build && cd dist && npm publish"
   },
   "dependencies": {
-    "@types/node": "^7.0.5",
-    "magnet-core": "^3.4.2",
-    "pg": "^6.1.2",
-    "sequelize": "^3.30.2",
-    "typescript": "^2.2.1"
+    "magnet-core": "^3.7.7"
   },
   "devDependencies": {
-    "concurrently": "^3.3.0",
-    "nodemon": "^1.9.1",
-    "rimraf": "^2.5.4",
-    "standard": "^8.6.0",
-    "tap-spec": "^4.1.1"
+    "fly": "^2.0.5",
+    "fly-clear": "^1.0.1",
+    "fly-esnext": "^2.0.1",
+    "fly-flatten": "^1.0.1",
+    "fly-typescript": "^1.0.0",
+    "fly-watch": "^1.1.1"
   },
   "engines": {
     "node": ">=6.9.5"
-  }
+  },
+  "license": "MIT"
 }

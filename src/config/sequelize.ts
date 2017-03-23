@@ -1,3 +1,4 @@
+// http://docs.sequelizejs.com/en/latest/docs/getting-started/
 export default {
   relationshipFile: 'server/models/relationships',
 
