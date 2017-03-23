@@ -3,21 +3,22 @@ import * as path from 'path'
 
 import defaultConfig from './config/sequelize'
 
-export default class SequelizeRelationship extends Module {
-  async setup () {
-    const config = this.prepareConfig('sequelize', defaultConfig)
+export default class MagnetSequelizeRelationship extends Module {
+  get moduleName () { return 'sequelize' }
+  get defaultConfig () { return __dirname }
 
+  async setup () {
     const relationships = require(
       path.resolve(
-        this.config.baseDirPath,
-        config.relationshipFile
+        this.app.config.baseDirPath,
+        this.config.relationshipFile
       )
     )
 
     relationships.relationships(this.app)
 
-    if (config.sync) {
-      await this.app.sequelize.sync(config.sync)
+    if (this.config.sync) {
+      await this.app.sequelize.sync(this.config.sync)
     }
   }
 }

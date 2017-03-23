@@ -1,9 +1,16 @@
+import { Module } from 'magnet-core/module'
 import * as Sequelize from 'sequelize'
-import convert from 'magnet-core/convert'
 
-import defaultConfig from './config/sequelize'
+export default class MagnetSequelize extends Module {
+  get moduleName () { return 'sequelize' }
+  get defaultConfig () { return __dirname }
 
-export default convert(Sequelize, {
-  namespace: 'sequelize',
-  params: ['config.database', 'config.user', 'config.password', 'config']
-}, defaultConfig)
+  async setup () {
+    this.insert(new Sequelize(
+      this.config.database,
+      this.config.user,
+      this.config.password,
+      this.config
+    ))
+  }
+}
