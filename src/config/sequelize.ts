@@ -9,7 +9,7 @@ export default {
   // database: 'magnet_development',
   //
   // logging: false,
-  // sync: {
+  // sync: { // Should freeze to false, after first deploy
   //   force: true
   // }
 }

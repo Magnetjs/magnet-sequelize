@@ -1,0 +1,12 @@
+const sequelizeConfig = require('./server/config/sequelize').default
+const config = require('magnet-config/config').default
+
+const nodeEnv = process.env.NODE_ENV || 'development'
+
+module.exports = {
+  'migrations-path': 'server/database/migrations',
+  'seeders-path': 'server/database/seeders',
+  'models-path': 'server/models',
+  'config': __filename,
+  [nodeEnv]: sequelizeConfig({ config })
+}

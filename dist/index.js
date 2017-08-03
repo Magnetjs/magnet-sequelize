@@ -11,8 +11,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
 const Sequelize = require("sequelize");
 class MagnetSequelize extends module_1.Module {
-    get moduleName() { return 'sequelize'; }
-    get defaultConfig() { return __dirname; }
+    init() {
+        this.moduleName = 'sequelize';
+        this.defaultConfig = __dirname;
+    }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
             this.insert(new Sequelize(this.config.database, this.config.user, this.config.password, this.config));

@@ -2,8 +2,10 @@ import { Module } from 'magnet-core/module'
 import * as Sequelize from 'sequelize'
 
 export default class MagnetSequelize extends Module {
-  get moduleName () { return 'sequelize' }
-  get defaultConfig () { return __dirname }
+  init () {
+    this.moduleName = 'sequelize'
+    this.defaultConfig = __dirname
+  }
 
   async setup () {
     this.insert(new Sequelize(
