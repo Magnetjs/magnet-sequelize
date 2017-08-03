@@ -1,11 +1,11 @@
 import { Module } from 'magnet-core/module'
 import * as path from 'path'
 
-import defaultConfig from './config/sequelize'
-
 export default class MagnetSequelizeRelationship extends Module {
-  get moduleName () { return 'sequelize' }
-  get defaultConfig () { return __dirname }
+  init () {
+    this.moduleName = 'sequelize'
+    this.defaultConfig = __dirname
+  }
 
   async setup () {
     const relationships = require(
