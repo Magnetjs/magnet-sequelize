@@ -1,6 +1,6 @@
 {
   "name": "magnet-sequelize",
-  "version": "0.7.1",
+  "version": "1.0.0",
   "description": "Magnet adapter for sequelize",
   "keywords": [
     "magnet",
@@ -20,8 +20,8 @@
     "dist": "npm run build && cd dist && npm publish"
   },
   "dependencies": {
-    "magnet-core": "^3.7.7",
-    "sequelize": "^3.30.2"
+    "magnet-core": "^4.0.1",
+    "sequelize": "^4.4.2"
   },
   "devDependencies": {
     "fly": "^2.0.5",
@@ -29,8 +29,7 @@
     "fly-esnext": "^2.0.1",
     "fly-flatten": "^1.0.1",
     "fly-typescript": "^1.0.0",
-    "fly-watch": "^1.1.1",
-    "tedious": "^2.0.0"
+    "fly-watch": "^1.1.1"
   },
   "engines": {
     "node": ">=6.9.5"
