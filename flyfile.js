@@ -1,5 +1,5 @@
 export default async function (fly) {
-  await fly.start('build')
+  await fly.start('buildAndCopy')
   await fly.watch('src/**/*.ts', ['compileTypescript'])
 }
 
@@ -23,7 +23,7 @@ export async function clean(fly) {
 }
 
 export async function copyBasic(fly) {
-  await fly.source(['package.json', 'LICENSE', 'README.md'])
+  await fly.source(['package.json', 'LICENSE', 'README.md', 'src/.sequelizerc'])
     .flatten({ levels: 5 })
     .target('dist');
 }
