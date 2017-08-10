@@ -11,8 +11,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
 const path = require("path");
 class MagnetSequelizeRelationship extends module_1.Module {
-    get moduleName() { return 'sequelize'; }
-    get defaultConfig() { return __dirname; }
+    init() {
+        this.moduleName = 'sequelize';
+        this.defaultConfig = __dirname;
+    }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
             const relationships = require(path.resolve(this.app.config.baseDirPath, this.config.relationshipFile));
