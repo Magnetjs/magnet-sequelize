@@ -19,6 +19,9 @@ class MagnetSequelizeRelationship extends module_1.Module {
         return __awaiter(this, void 0, void 0, function* () {
             const relationships = require(path.resolve(this.app.config.baseDirPath, this.config.relationshipFile));
             relationships.relationships(this.app);
+            if (this.config.sync) {
+                yield this.app.sequelize.sync(this.config.sync);
+            }
         });
     }
 }
