@@ -16,5 +16,9 @@ export default class MagnetSequelizeRelationship extends Module {
     )
 
     relationships.relationships(this.app)
+
+    if (this.config.sync) {
+      await this.app.sequelize.sync(this.config.sync);
+    }
   }
 }

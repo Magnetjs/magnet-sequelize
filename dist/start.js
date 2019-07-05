@@ -9,18 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const module_1 = require("magnet-core/module");
-const path = require("path");
-class MagnetSequelizeRelationship extends module_1.Module {
+class MagnetSequelizeStart extends module_1.Module {
     init() {
         this.moduleName = 'sequelize';
         this.defaultConfig = __dirname;
     }
     setup() {
         return __awaiter(this, void 0, void 0, function* () {
-            const relationships = require(path.resolve(this.app.config.baseDirPath, this.config.relationshipFile));
-            relationships.relationships(this.app);
+            if (this.config.sync) {
+                yield this.app.sequelize.sync(this.config.sync);
+            }
         });
     }
 }
-exports.default = MagnetSequelizeRelationship;
-//# sourceMappingURL=relationship.js.map
+exports.default = MagnetSequelizeStart;
+//# sourceMappingURL=start.js.map
