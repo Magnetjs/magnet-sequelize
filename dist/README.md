@@ -1,6 +1,11 @@
 magnet-koa
 ===========
 
+### Installation
+
+`yarn add magnet-sequelize sequelize`
+`npm install --save magnet-sequelize sequelize`
+
 ### Usage
 Basic
 ```
